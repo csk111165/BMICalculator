@@ -10,6 +10,9 @@ class BMICalculator extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Color(0xFF0A0E21),
         scaffoldBackgroundColor:  Color(0xFF0A0E21),
+        textTheme: TextTheme(
+          bodyMedium: TextStyle(color: Colors.white),
+        ),
         primarySwatch: Colors.pink,
         appBarTheme: AppBarTheme(
           backgroundColor:Color(0xFF0A0E21),
