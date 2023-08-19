@@ -16,16 +16,16 @@ class _InputPageState extends State<InputPage> {
         Expanded(
             child: Row(children: [
           Expanded(
-            child: ReusableCard(),
+            child: ReusableCard(cardColor: Colors.green,),
           ),
           Expanded(
-            child: ReusableCard(),
+            child: ReusableCard(cardColor: Colors.blue,),
           ),
         ])),
 
         // this is mid part of the screen having only one widget
         Expanded(
-          child: ReusableCard(),
+          child: ReusableCard(cardColor: Colors.red,),
         ),
 
         // bottom part contains two row elements
@@ -33,10 +33,10 @@ class _InputPageState extends State<InputPage> {
           child: Row(
             children: [
               Expanded(
-                child: ReusableCard(),
+                child: ReusableCard(cardColor: Colors.pink,),
               ),
               Expanded(
-                child: ReusableCard(),
+                child: ReusableCard(cardColor: Colors.purple,),
               ),
             ],
           ),
@@ -48,8 +48,8 @@ class _InputPageState extends State<InputPage> {
 
 class ReusableCard extends StatelessWidget {
 
-  ReusableCard({this.cardColor});
-  Color cardColor;
+  ReusableCard({ this.cardColor});
+  Color? cardColor;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -60,7 +60,7 @@ class ReusableCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         // when we define the BoxDecoration the color property should be inside here only
-        color: Color(0xFF1D1E33),
+        color: cardColor,
       ),
     );
   }
