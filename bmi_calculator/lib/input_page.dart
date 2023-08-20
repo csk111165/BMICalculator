@@ -25,11 +25,16 @@ class _InputPageState extends State<InputPage> {
       body: Column(children: [
         Expanded(
             child: Row(children: [
-          Expanded(
-            child: ReusableCard(
-              cardColor: activeCardColor,
-              cardChild: IconContent(icon: FontAwesomeIcons.mars, label: 'Male',),
-              ),
+          TextButton(
+            onPressed: () {
+              
+            },
+            child: Expanded(
+              child: ReusableCard(
+                cardColor: activeCardColor,
+                cardChild: IconContent(icon: FontAwesomeIcons.mars, label: 'Male',),
+                ),
+            ),
           ),
           Expanded(
                 child: ReusableCard(cardColor: activeCardColor,
