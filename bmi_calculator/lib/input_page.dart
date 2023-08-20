@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'icon_content.dart';
+import 'reusable_card.dart';
 
 
 const double bottomContainerHeight = 80.0;
-const activeCardColor = Color(0xFF1D1E33);
-const bottomContainerColor =  Color(0xFFEB1555);
+const Color activeCardColor = Color(0xFF1D1E33);
+const Color bottomContainerColor =  Color(0xFFEB1555);
 
 
 class InputPage extends StatefulWidget {
@@ -23,11 +26,16 @@ class _InputPageState extends State<InputPage> {
         Expanded(
             child: Row(children: [
           Expanded(
-            child: ReusableCard(cardColor: activeCardColor),
+            child: ReusableCard(
+              cardColor: activeCardColor,
+              cardChild: IconContent(icon: FontAwesomeIcons.mars, label: 'Male',),
+              ),
           ),
           Expanded(
-            child: ReusableCard(cardColor: activeCardColor),
-          ),
+                child: ReusableCard(cardColor: activeCardColor,
+                cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'Female',),
+                ),
+              ),
         ])),
 
         // this is mid part of the screen having only one widget
@@ -43,7 +51,9 @@ class _InputPageState extends State<InputPage> {
                 child: ReusableCard(cardColor: activeCardColor),
               ),
               Expanded(
-                child: ReusableCard(cardColor: activeCardColor),
+                child: ReusableCard(cardColor: activeCardColor,
+                cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'Female',),
+                ),
               ),
               
             ],
@@ -60,23 +70,5 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class ReusableCard extends StatelessWidget {
 
-  final Color cardColor;
-  ReusableCard({ required this.cardColor});
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      // for magin
-      margin: EdgeInsets.all(15),
-
-      // for border radius
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        // when we define the BoxDecoration the color property should be inside here only
-        color: cardColor, // this is coming from the constructor
-      ),
-    );
-  }
-}
