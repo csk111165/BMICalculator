@@ -3,16 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 
-
 const double bottomContainerHeight = 80.0;
 const Color activeCardColor = Color(0xFF1D1E33);
 const Color inactiveCardColor = Color(0xFF111328);
-const Color bottomContainerColor =  Color(0xFFEB1555);
+const Color bottomContainerColor = Color(0xFFEB1555);
 
-enum Gender {
-  male,
-  female
-}
+enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -20,7 +16,6 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-
   Color maleCardColor = inactiveCardColor;
   Color femaleCardColor = inactiveCardColor;
 
@@ -33,36 +28,41 @@ class _InputPageState extends State<InputPage> {
         title: const Center(child: Text('BMI CALCULATOR')),
       ),
       body: Column(children: [
-         Expanded(
+        Expanded(
             child: Row(children: [
           Expanded(
-            // for enabling the touch 
-            child: GestureDetector(
-              
-              onTap: () {
+            // for enabling the touch
+            child: ReusableCard(
+              onPress: (){
                 setState(() {
-                  selectedGender  = Gender.male;
+                  selectedGender = Gender.male;
                 });
-                
               },
-              child: ReusableCard(
-                cardColor: selectedGender == Gender.male ? activeCardColor: inactiveCardColor,
-                cardChild: IconContent(icon: FontAwesomeIcons.mars, label: 'Male',),
-                ),
+              cardColor: selectedGender == Gender.male
+                  ? activeCardColor
+                  : inactiveCardColor,
+              cardChild: IconContent(
+                icon: FontAwesomeIcons.mars,
+                label: 'Male',
+              ),
             ),
           ),
           Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedGender = Gender.female;
-                    });
-                  },
-                  child: ReusableCard(cardColor: selectedGender == Gender.female ? activeCardColor: inactiveCardColor,
-                  cardChild: IconContent(icon: FontAwesomeIcons.venus, label: 'Female',),
-                  ),
-                ),
+            child: ReusableCard(
+              onPress: () {
+                setState(() {
+                  selectedGender = Gender.female;
+                });
+              },
+              cardColor: selectedGender == Gender.female
+                  ? activeCardColor
+                  : inactiveCardColor,
+              cardChild: IconContent(
+                icon: FontAwesomeIcons.venus,
+                label: 'Female',
               ),
+            ),
+          ),
         ])),
 
         // this is mid part of the screen having only one widget
@@ -78,24 +78,20 @@ class _InputPageState extends State<InputPage> {
                 child: ReusableCard(cardColor: activeCardColor),
               ),
               Expanded(
-                child: ReusableCard(cardColor: activeCardColor,
-                
+                child: ReusableCard(
+                  cardColor: activeCardColor,
                 ),
               ),
-              
             ],
           ),
         ),
         Container(
-            color: bottomContainerColor,
-            width: double.infinity,
-            margin: EdgeInsets.only(top: 10.0),
-            height: bottomContainerHeight,
+          color: bottomContainerColor,
+          width: double.infinity,
+          margin: EdgeInsets.only(top: 10.0),
+          height: bottomContainerHeight,
         ),
       ]),
     );
   }
 }
-
-
-
