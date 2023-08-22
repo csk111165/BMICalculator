@@ -137,25 +137,18 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            FloatingActionButton(
-                              backgroundColor: Color(0xFF4C4F5E),
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
                               onPressed: (){
                                 setState(() {
                                   weight++;
                                 });
-                              }),
+                              },
+                              ),
                             // to give some space between button
                             SizedBox(width: 10,),
-                            FloatingActionButton(
-                              backgroundColor: Color(0xFF4C4F5E),
-                              child: Icon(
-                                Icons.heart_broken,
-                                color: Colors.red,
-                              ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
                               onPressed: () {
                                setState(() {
                                  weight--;
@@ -203,13 +196,14 @@ class RoundIconButton extends StatelessWidget {
     return RawMaterialButton(
       shape: CircleBorder(),
       child: Icon(icon),
+      enableFeedback: false,
       onPressed: onPressed,
       constraints: BoxConstraints.tightFor(
         width: 56.0,
         height: 56.0,
       ),
       
-      fillColor: Colors.red,
+      fillColor:  Color(0xFF4C4F5E),
     );
   }
 }
