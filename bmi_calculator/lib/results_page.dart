@@ -18,7 +18,7 @@ class ResultsPage extends StatelessWidget {
           Expanded(
             child: Container(
               child: const Text(
-                'Your Result',
+                'Your Result..',
                 style: kResultTitleText,
               ),
             ),

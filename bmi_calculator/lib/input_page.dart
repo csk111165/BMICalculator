@@ -1,9 +1,11 @@
-import 'package:bmi_calculator/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
+import 'results_page.dart';
+import 'round_icon_button.dart';
+import  'bottom_button.dart';
 
 enum Gender { male, female }
 
@@ -210,48 +212,16 @@ class _InputPageState extends State<InputPage> {
             ],
           ),
         ),
-        GestureDetector(
+          BottomButton(
+          buttonTitle: 'Calculte BMI', 
           onTap: () {
-            // adding the code for screen navigation, it will allow to go to other screen results page
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResultsPage()));
-          },
-          child: Container(
-            color: bottomContainerColor,
-            width: double.infinity,
-            margin: const EdgeInsets.only(top: 10.0),
-            height: bottomContainerHeight,
-            padding: const EdgeInsets.only(bottom: 20.0),
-            child: const Center(
-              child: Text(
-                'CALCULATE',
-                style: klargeButtonStyle,
-                ),
-            ),
-          ),
-        ),
+           Navigator.push(context, MaterialPageRoute(builder: (context) => const ResultsPage()));
+         },
+         ),
       ]),
     );
   }
 }
 
-class RoundIconButton extends StatelessWidget {
-  final IconData icon;
-  final VoidCallback? onPressed;
 
-  const RoundIconButton({super.key, required this.icon, this.onPressed});
 
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      shape: const CircleBorder(),
-      enableFeedback: false,
-      onPressed: onPressed,
-      constraints: const BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      fillColor: const Color(0xFF4C4F5E),
-      child: Icon(icon),
-    );
-  }
-}
