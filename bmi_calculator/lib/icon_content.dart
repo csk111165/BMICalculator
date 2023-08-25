@@ -6,7 +6,7 @@ class IconContent extends StatelessWidget {
   final IconData icon;
   final String label;
 
-  IconContent({required this.icon, required this.label});
+  const IconContent({super.key, required this.icon, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class IconContent extends StatelessWidget {
         size: 80,
         ),
         // this is to give space between icon and the text
-        SizedBox(
+        const SizedBox(
           height: 15.0,
         ),
         Text(

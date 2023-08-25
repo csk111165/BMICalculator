@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
@@ -7,6 +8,8 @@ import 'constants.dart';
 enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
+  const InputPage({super.key});
+
   @override
   _InputPageState createState() => _InputPageState();
 }
@@ -40,7 +43,7 @@ class _InputPageState extends State<InputPage> {
               cardColor: selectedGender == Gender.male
                   ? activeCardColor
                   : inactiveCardColor,
-              cardChild: IconContent(
+              cardChild: const IconContent(
                 icon: FontAwesomeIcons.mars,
                 label: 'Male',
               ),
@@ -56,7 +59,7 @@ class _InputPageState extends State<InputPage> {
               cardColor: selectedGender == Gender.female
                   ? activeCardColor
                   : inactiveCardColor,
-              cardChild: IconContent(
+              cardChild: const IconContent(
                 icon: FontAwesomeIcons.venus,
                 label: 'Female',
               ),
@@ -71,7 +74,7 @@ class _InputPageState extends State<InputPage> {
             cardChild: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "Height",
                   style: labelStyle,
                 ),
@@ -84,7 +87,7 @@ class _InputPageState extends State<InputPage> {
                       height.toString(),
                       style: numberTextStyle,
                     ),
-                    Text(
+                    const Text(
                       'cm',
                       style: labelStyle,
                     ),
@@ -93,12 +96,12 @@ class _InputPageState extends State<InputPage> {
                 // add a slider
                 SliderTheme(
                   data: SliderTheme.of(context).copyWith(
-                    thumbColor: Color(0xFFEB1555),
+                    thumbColor: const Color(0xFFEB1555),
                     activeTrackColor: Colors.white,
-                    inactiveTrackColor: Color(0xFF8D8E98),
-                    overlayColor: Color(0x29EB1555),
-                    thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15),
-                    overlayShape: RoundSliderOverlayShape(overlayRadius: 30),
+                    inactiveTrackColor: const Color(0xFF8D8E98),
+                    overlayColor: const Color(0x29EB1555),
+                    thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 15),
+                    overlayShape: const RoundSliderOverlayShape(overlayRadius: 30),
                   ),
                   child: Slider(
                     value: height.toDouble(),
@@ -126,7 +129,7 @@ class _InputPageState extends State<InputPage> {
                   cardChild: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'WEIGHT',
                         style: labelStyle,
                       ),
@@ -146,7 +149,7 @@ class _InputPageState extends State<InputPage> {
                             },
                           ),
                           // to give some space between button
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           RoundIconButton(
@@ -168,7 +171,7 @@ class _InputPageState extends State<InputPage> {
                   cardChild: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'AGE',
                         style: labelStyle,
                       ),
@@ -188,7 +191,7 @@ class _InputPageState extends State<InputPage> {
                             },
                           ),
                           // to give some space between button
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           RoundIconButton(
@@ -207,11 +210,24 @@ class _InputPageState extends State<InputPage> {
             ],
           ),
         ),
-        Container(
-          color: bottomContainerColor,
-          width: double.infinity,
-          margin: EdgeInsets.only(top: 10.0),
-          height: bottomContainerHeight,
+        GestureDetector(
+          onTap: () {
+            // adding the code for screen navigation, it will allow to go to other screen results page
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const ResultsPage()));
+          },
+          child: Container(
+            color: bottomContainerColor,
+            width: double.infinity,
+            margin: const EdgeInsets.only(top: 10.0),
+            height: bottomContainerHeight,
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: const Center(
+              child: Text(
+                'CALCULATE',
+                style: klargeButtonStyle,
+                ),
+            ),
+          ),
         ),
       ]),
     );
@@ -222,20 +238,20 @@ class RoundIconButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback? onPressed;
 
-  RoundIconButton({required this.icon, this.onPressed});
+  const RoundIconButton({super.key, required this.icon, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      shape: CircleBorder(),
-      child: Icon(icon),
+      shape: const CircleBorder(),
       enableFeedback: false,
       onPressed: onPressed,
-      constraints: BoxConstraints.tightFor(
+      constraints: const BoxConstraints.tightFor(
         width: 56.0,
         height: 56.0,
       ),
-      fillColor: Color(0xFF4C4F5E),
+      fillColor: const Color(0xFF4C4F5E),
+      child: Icon(icon),
     );
   }
 }

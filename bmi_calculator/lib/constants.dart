@@ -17,3 +17,29 @@ const numberTextStyle = TextStyle(
                           fontSize: 50,
                           fontWeight: FontWeight.w900,
                         );
+
+
+const klargeButtonStyle = TextStyle(
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+);
+
+const kResultTitleText = TextStyle(
+  fontSize: 50,
+  fontWeight: FontWeight.bold,
+);
+
+const kResultStyle = TextStyle(
+  color: Color(0xFF24D876),
+  fontSize: 30.0,
+  fontWeight: FontWeight.bold,
+);
+
+const kBMITextStyle = TextStyle(
+  fontSize: 80,
+  fontWeight: FontWeight.bold
+);
+
+const kBodyTextStyle = TextStyle(
+  fontSize: 20,
+);
