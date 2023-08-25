@@ -4,7 +4,12 @@ import 'constants.dart';
 import 'bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({super.key});
+  
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
+  ResultsPage({required this.bmiResult, required this.resultText, required this.interpretation});
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +23,15 @@ class ResultsPage extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              child: const Text(
-                'Your Result..',
+              padding: EdgeInsets.all(20),
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                'Your Result',
                 style: kResultTitleText,
               ),
             ),
           ),
-          const Expanded(
+           Expanded(
             // flex allows to make the area larger, by default it is set to 1
             flex: 4,
             child: ReusableCard(
@@ -34,15 +41,15 @@ class ResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Normal',
+                    resultText,
                     style: kResultStyle,
                   ),
                   Text(
-                    '18.3',
+                    bmiResult,
                     style: kBMITextStyle,
                   ),
                   Text(
-                    'Your BMI score is good, eat healthy and go for a walk in morning!',
+                    interpretation,
                     style: kBodyTextStyle,
                     textAlign: TextAlign.center,
                   ),
